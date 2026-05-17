@@ -1,0 +1,36 @@
+# sweetcookiekit (Python Wrapper)
+
+This is a Python wrapper for the macOS `SweetCookieKit` Swift library. It allows you to extract browser cookies from Safari, Chromium, and Firefox directly into Python data structures.
+
+## Installation
+
+```bash
+pip install .
+```
+
+## Setup & Requirements
+
+This wrapper uses the `SweetCookieCLI` binary under the hood to access macOS APIs natively.
+Before using the Python library, you **must compile the CLI binary on a macOS machine**.
+
+1. Navigate to the `Examples/CookieCLI` directory of the repository.
+2. Build the Swift binary:
+   ```bash
+   cd Examples/CookieCLI
+   swift build -c release
+   ```
+3. Copy the built executable (`.build/release/SweetCookieCLI`) to a directory in your `$PATH` (e.g., `/usr/local/bin`), or pass its exact path into the Python functions using the `cli_path` argument.
+
+## Usage
+
+```python
+from sweetcookiekit import get_cookies
+
+# Get all cookies for a domain
+stores = get_cookies(domains=["example.com"], include_expired=False)
+
+for store in stores:
+    print(f"Browser: {store.browserDisplayName}, Profile: {store.profileName}")
+    for cookie in store.records:
+        print(f" - {cookie.name}: {cookie.value}")
+```
