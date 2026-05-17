@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+sweetcookiekit/__init__.py
+sweetcookiekit.egg-info/PKG-INFO
+sweetcookiekit.egg-info/SOURCES.txt
+sweetcookiekit.egg-info/dependency_links.txt
+sweetcookiekit.egg-info/top_level.txt
